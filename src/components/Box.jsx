@@ -1,18 +1,14 @@
-import { useRef, useState } from "react";
-import { useFrame } from "@react-three/fiber";
+import { useRef, useState } from "react"
+import { useFrame } from "@react-three/fiber"
 
 const Box = (props) => {
-  // Direct reference to Object
-  const ref = useRef();
-  // Store state info
-  const [hoverState, setHoverState] = useState(false);
-  const [clickState, setClickState] = useState(false);
+  const ref = useRef()
+  const [hoverState, setHoverState] = useState(false)
+  const [clickState, setClickState] = useState(false)
 
-  // Register to render-loop
-  useFrame((state, delta) => (ref.current.rotation.x += 0.01));
-  useFrame((state, delta) => (ref.current.rotation.z += 0.01));
+  useFrame((state, delta) => (ref.current.rotation.x += 0.01))
+  useFrame((state, delta) => (ref.current.rotation.z += 0.01))
 
-  // return view
   return (
     <mesh
       {...props}
@@ -25,7 +21,7 @@ const Box = (props) => {
       <boxGeometry args={[2, 2, 2]} />
       <meshStandardMaterial color={ hoverState ? "red" : "hotpink"} />
     </mesh>
-  );
-};
+  )
+}
 
-export default Box;
+export default Box
